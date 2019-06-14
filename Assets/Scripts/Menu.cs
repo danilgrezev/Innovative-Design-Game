@@ -13,7 +13,7 @@ public class Menu : MonoBehaviour {
 
     public void ContineGame()
     {
-
+        //f
     }
 
     public void Settings()
