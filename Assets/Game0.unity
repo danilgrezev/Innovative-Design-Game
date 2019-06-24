@@ -965,7 +965,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -546.7, y: -300.3}
+  m_AnchoredPosition: {x: -380.7, y: -178.29999}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &462496173
@@ -1117,7 +1117,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 544, y: -305}
+  m_AnchoredPosition: {x: 362.09998, y: -186}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &537081882
@@ -1879,7 +1879,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 402.9, y: -320}
+  m_AnchoredPosition: {x: 221, y: -201}
   m_SizeDelta: {x: 180, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1241862554
@@ -2639,6 +2639,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef94f963ff0773544af3c4a913d21c19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  theEnemy: {fileID: 1000597641180636, guid: a1aff0929c3644e8f8cbc6dd0d222517, type: 3}
+  Player: {fileID: 1773131082}
   maxHp: 0
   hp: 0
   slider: {fileID: 1241862554}
@@ -2692,7 +2694,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -403, y: -320}
+  m_AnchoredPosition: {x: -237, y: -198}
   m_SizeDelta: {x: 180, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1884485513

@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class HP : MonoBehaviour
 {
+    public GameObject theEnemy;
+    public GameObject Player;
     public int maxHp;
     public int hp;
     public Slider slider;
@@ -20,6 +22,11 @@ public class HP : MonoBehaviour
     void Update()
     {
         slider.value = hp;
+        if (theEnemy.tag == "Health" && Player.transform.position == theEnemy.transform.position)
+        {
+            hp += 15;
+            Debug.Log(hp);
+        }
         if (Input.GetKeyDown(KeyCode.H))
         {
             hp -= 20;

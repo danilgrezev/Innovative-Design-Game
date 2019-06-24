@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GenerationObjects : MonoBehaviour
 {    
@@ -11,7 +12,7 @@ public class GenerationObjects : MonoBehaviour
     public int xPos;
     public int zPos;
     public int enemyCount;
-    // Start is called before the first frame update
+    // Start is called before the first frame updates
     void Start()
     {
         StartCoroutine(EnemyDrop());
