@@ -15,8 +15,11 @@ public class FpsMovement : MonoBehaviour
 {
     [SerializeField] private Camera headCam;
 
-    public float speed = 6.0f;
-    public float gravity = -9.8f;
+    static public float speed = 6.0f;
+    static public float gravity = -9.8f;
+   // public float jumpSpeed = 8.0F;
+
+    private Vector3 moveDirection = Vector3.zero;
 
     public float sensitivityHor = 5.0f;
     public float sensitivityVert = 5.0f;
@@ -31,13 +34,16 @@ public class FpsMovement : MonoBehaviour
     void Start()
     {
         charController = GetComponent<CharacterController>();
+        
     }
 
     void Update()
     {
         MoveCharacter();
         RotateCharacter();
-        RotateCamera();
+        RotateCamera();     
+
+       
     }
 
     private void MoveCharacter()
