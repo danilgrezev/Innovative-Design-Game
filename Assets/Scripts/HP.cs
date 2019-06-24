@@ -18,7 +18,7 @@ public class HP : MonoBehaviour
         hp = maxHp;
     }
 
-    // Update is called once per frame
+    /// Update is called once per frame
     void Update()
     {
         slider.value = hp;
