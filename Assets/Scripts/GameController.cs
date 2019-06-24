@@ -23,6 +23,8 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    public static int hei;
+    public static int hai;
     [SerializeField] private FpsMovement player;
     [SerializeField] private Text timeLabel;
     [SerializeField] private Text scoreLabel;
@@ -57,7 +59,17 @@ public class GameController : MonoBehaviour
 
     private void StartNewMaze()
     {
-        generator.GenerateNewMaze(33, 35, OnStartTrigger, OnGoalTrigger);
+        int[] a = new int[] {15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35 };
+        System.Random rand = new System.Random();
+        int i = rand.Next(0, 10);
+        int i1 = rand.Next(0, 10);
+        hei = a[i];
+        hai = a[i1];
+        Debug.Log(hei);
+        Debug.Log(hai);
+
+
+        generator.GenerateNewMaze(hei, hai, OnStartTrigger, OnGoalTrigger);
 
         float x = generator.startCol * generator.hallWidth;
         float y = 1;
