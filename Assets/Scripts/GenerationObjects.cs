@@ -19,7 +19,7 @@ public class GenerationObjects : MonoBehaviour
         {
             var maxx = GameController.hei;
             var maxz = GameController.hai;
-            xPos = Random.Range(5, maxz*3);
+            xPos = Random.Range(5, maxz*3);//чтобы у
             zPos = Random.Range(5, maxx*3);
             Instantiate(theEnemy, new Vector3(xPos, 1, zPos), Quaternion.identity);
             yield return new WaitForSeconds(0.1f);
