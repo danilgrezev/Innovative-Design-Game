@@ -7,7 +7,7 @@ public class MazeMeshGenerator
     // generator params
     public float width;     // how wide are hallways
     public float height;    // how tall are hallways
-
+    public static List<int> wallTriangles;
     public MazeMeshGenerator()
     {
         width = 3.75f;
@@ -24,7 +24,7 @@ public class MazeMeshGenerator
         // multiple materials for floors and walls
         maze.subMeshCount = 2;
         List<int> floorTriangles = new List<int>();
-        List<int> wallTriangles = new List<int>();
+        wallTriangles = new List<int>();
 
         int rMax = data.GetUpperBound(0);
         int cMax = data.GetUpperBound(1);
@@ -34,6 +34,15 @@ public class MazeMeshGenerator
         {
             for (int j = 0; j <= cMax; j++)
             {
+                if (data[i, j] == 1)
+                { // ceiling
+                    AddQuad(Matrix4x4.TRS(
+                    new Vector3(j * width, height, i * width),
+                    Quaternion.LookRotation(Vector3.up),
+                    new Vector3(width, width, 0)
+                ), ref newVertices, ref newUVs, ref floorTriangles);
+
+                }
                 if (data[i, j] != 1)
                 {
                     // floor
@@ -43,15 +52,8 @@ public class MazeMeshGenerator
                         new Vector3(width, width, 1)
                     ), ref newVertices, ref newUVs, ref floorTriangles);
 
-                    //// ceiling
-                    //AddQuad(Matrix4x4.TRS(
-                    //    new Vector3(j * width, height, i * width),
-                    //    Quaternion.LookRotation(Vector3.down),
-                    //    new Vector3(width, width, 1)
-                    //), ref newVertices, ref newUVs, ref floorTriangles);
-
-
-                    // walls on sides next to blocked grid cells
+                    
+                    //walls on sides next to blocked grid cells
 
                     if (i - 1 < 0 || data[i - 1, j] == 1)
                     {

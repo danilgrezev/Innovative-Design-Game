@@ -11,6 +11,7 @@ public class MazeConstructor : MonoBehaviour
     [SerializeField] private Material startMat;
     [SerializeField] private Material treasureMat;
 
+  
     public int[,] data
     {
         get; private set;
