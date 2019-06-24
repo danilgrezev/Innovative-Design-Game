@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GenerationObjects : MonoBehaviour
-{
+{    
     public GameObject theEnemy;
     public GameObject theEnemy1;
     public GameObject theEnemy2;
@@ -24,13 +24,11 @@ public class GenerationObjects : MonoBehaviour
             var maxx = GameController.hei;
             var maxz = GameController.hai;
 
-            xPos = Random.Range(5, maxz*3);//чтобы **у
-            zPos = Random.Range(5, maxx*3);
+            xPos = Random.Range(5, maxz * 3);//чтобы **у
+            zPos = Random.Range(5, maxx * 3);
             Instantiate(theEnemy, new Vector3(xPos, 1, zPos), Quaternion.identity);
             yield return new WaitForSeconds(0.1f);
             enemyCount += 1;
-
-
         }
         enemyCount = 0;
         while (enemyCount < 2)
@@ -44,8 +42,6 @@ public class GenerationObjects : MonoBehaviour
             Instantiate(theEnemy1, new Vector3(xPos, 1, zPos), Quaternion.identity);
             yield return new WaitForSeconds(0.1f);
             enemyCount += 1;
-
-
         }
         enemyCount = 0;
         while (enemyCount < 2)
@@ -59,8 +55,6 @@ public class GenerationObjects : MonoBehaviour
             Instantiate(theEnemy2, new Vector3(xPos, 1, zPos), Quaternion.identity);
             yield return new WaitForSeconds(0.1f);
             enemyCount += 1;
-
-
         }
         enemyCount = 0;
         while (enemyCount < 2)
@@ -74,9 +68,8 @@ public class GenerationObjects : MonoBehaviour
             Instantiate(theEnemy3, new Vector3(xPos, 1, zPos), Quaternion.identity);
             yield return new WaitForSeconds(0.1f);
             enemyCount += 1;
-
-
         }
+
     }
 
     // Update is called once per frame

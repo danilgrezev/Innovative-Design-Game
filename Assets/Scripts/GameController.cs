@@ -7,20 +7,6 @@ using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(MazeConstructor))]               // 1
 
-//public class GameController : MonoBehaviour
-//{
-//    private MazeConstructor generator;
-
-//    void Start()
-//    {
-//        generator = GetComponent<MazeConstructor>();      // 2
-//        generator.GenerateNewMaze(31, 33);
-//    }
-//}
-
-
-[RequireComponent(typeof(MazeConstructor))]
-
 public class GameController : MonoBehaviour
 {
     public static int hei;
@@ -31,11 +17,11 @@ public class GameController : MonoBehaviour
 
     private MazeConstructor generator;
 
-    private DateTime startTime;
-    private int timeLimit;
+    private DateTime strtTime;
+    private int tmeLimit;
     private int reduceLimitBy;
 
-    private int score;
+    private int scre;
     private bool goalReached;
 
     // Use this for initialization
@@ -47,12 +33,12 @@ public class GameController : MonoBehaviour
 
     private void StartNewGame()
     {
-        timeLimit = 80;
+        tmeLimit = 100;
         reduceLimitBy = 5;
-        startTime = DateTime.Now;
+        strtTime = DateTime.Now;
 
-        score = 0;
-        scoreLabel.text = score.ToString();
+        scre = 0;
+        scoreLabel.text = scre.ToString();
 
         StartNewMaze();
     }
@@ -80,8 +66,8 @@ public class GameController : MonoBehaviour
         player.enabled = true;
 
         // restart timer
-        timeLimit -= reduceLimitBy;
-        startTime = DateTime.Now;
+        tmeLimit -= reduceLimitBy;
+        strtTime = DateTime.Now;
     }
 
     // Update is called once per frame
@@ -92,8 +78,8 @@ public class GameController : MonoBehaviour
             return;
         }
 
-        int timeUsed = (int)(DateTime.Now - startTime).TotalSeconds;
-        int timeLeft = timeLimit - timeUsed;
+        int timeUsed = (int)(DateTime.Now - strtTime).TotalSeconds;
+        int timeLeft = tmeLimit - timeUsed;
 
         if (timeLeft > 0)
         {
@@ -114,8 +100,8 @@ public class GameController : MonoBehaviour
         
         goalReached = true;
 
-        score += 1;
-        scoreLabel.text = score.ToString();
+        scre += 1;
+        scoreLabel.text = scre.ToString();
 
         
     }

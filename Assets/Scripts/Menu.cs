@@ -10,12 +10,7 @@ public class Menu : MonoBehaviour {
 	public void NewGame()
     {
         SceneManager.LoadScene(1);
-    }
-
-    public void ContineGame()
-    {
-        //f
-    }
+    }    
 
     public void Settings()
     {
