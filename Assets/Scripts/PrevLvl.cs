@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PrevLvl : MonoBehaviour
 {
-    public int scen = int.Parse(SceneManager.GetActiveScene().name);
+    public int scen = SceneManager.GetActiveScene().buildIndex;
     //public string playerTag;
     public void OnTriggerStay(Collider other)
     {

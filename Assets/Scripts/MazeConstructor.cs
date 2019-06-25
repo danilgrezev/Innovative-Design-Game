@@ -81,7 +81,7 @@ public class MazeConstructor : MonoBehaviour
 
         DisplayMaze();
 
-        PlaceStartTrigger(startCallback);
+        //PlaceStartTrigger(startCallback);
         PlaceGoalTrigger(goalCallback);
     }
 
@@ -152,22 +152,22 @@ public class MazeConstructor : MonoBehaviour
         }
     }
 
-    private void PlaceStartTrigger(TriggerEventHandler callback)//, LoadLvl loadLvl)
-    {
-        GameObject go = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        go.transform.position = new Vector3(startCol * hallWidth, .5f, startRow * hallWidth);
-        go.name = "Start Trigger";
-        go.tag = "Generated";
+    //private void PlaceStartTrigger(TriggerEventHandler callback)//, LoadLvl loadLvl)
+    //{
+    //    GameObject go = GameObject.CreatePrimitive(PrimitiveType.Cube);
+    //    go.transform.position = new Vector3(startCol * hallWidth, .5f, startRow * hallWidth);
+    //    go.name = "Start Trigger";
+    //    go.tag = "Generated";
 
-        go.GetComponent<BoxCollider>().isTrigger = true;
-        go.GetComponent<MeshRenderer>().sharedMaterial = startMat;
+    //    go.GetComponent<BoxCollider>().isTrigger = true;
+    //    go.GetComponent<MeshRenderer>().sharedMaterial = startMat;
 
-        //LoadLvl LV = go.AddComponent<LoadLvl>();
-        //LV.loadLvl = loadLvl;
+    //    //LoadLvl LV = go.AddComponent<LoadLvl>();
+    //    //LV.loadLvl = loadLvl;
 
-        TriggerEventRouter tc = go.AddComponent<TriggerEventRouter>();
-        tc.callback = callback;
-    }
+    //    TriggerEventRouter tc = go.AddComponent<TriggerEventRouter>();
+    //    tc.callback = callback;
+    //}
 
     private void PlaceGoalTrigger(TriggerEventHandler callback)
     {

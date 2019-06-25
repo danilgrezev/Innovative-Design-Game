@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 //public delegate void LoadLvl
 public class LoadLvl : MonoBehaviour
 {    
-    public int scen = int.Parse(SceneManager.GetActiveScene().name);
+    public int scen = SceneManager.GetActiveScene().buildIndex;
     //public string playerTag;
     public void OnTriggerStay(Collider other)
     {

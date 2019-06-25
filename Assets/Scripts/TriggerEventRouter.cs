@@ -10,7 +10,7 @@ public class TriggerEventRouter : MonoBehaviour
 {
     public TriggerEventHandler callback;
     //public LoadLvlHandler loadLvl;
-    public int scen = int.Parse(SceneManager.GetActiveScene().name);
+    public int scen = SceneManager.GetActiveScene().buildIndex;
     public int scenNext;
     public int scenPrev;
     

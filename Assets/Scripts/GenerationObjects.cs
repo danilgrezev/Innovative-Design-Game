@@ -4,19 +4,46 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GenerationObjects : MonoBehaviour
+<<<<<<< GenerationDG
 {    
+=======
+{
+    
+
+    public GameObject Player;
+>>>>>>> local
     public GameObject theEnemy;
     public GameObject theEnemy1;
     public GameObject theEnemy2;
     public GameObject theEnemy3;
+<<<<<<< GenerationDG
+=======
+
+    
+
+    public static int sceneName;
+    
+    
+>>>>>>> local
     public int xPos;
     public int zPos;
     public int enemyCount;
     // Start is called before the first frame updates
     void Start()
     {
+<<<<<<< GenerationDG
         StartCoroutine(EnemyDrop());
     }
+=======
+       
+
+        sceneName = SceneManager.GetActiveScene().buildIndex;
+        StartCoroutine(EnemyDrop());
+    }
+
+   
+
+>>>>>>> local
     IEnumerator EnemyDrop()
     {
         while (enemyCount < 2)
@@ -72,10 +99,16 @@ public class GenerationObjects : MonoBehaviour
         }
 
     }
-
-    // Update is called once per frame
     void Update()
     {
+<<<<<<< GenerationDG
         
+=======
+        if (Player.transform.position.y < -3)
+        {
+            SceneManager.LoadScene(sceneName);
+
+        }
+>>>>>>> local
     }
 }

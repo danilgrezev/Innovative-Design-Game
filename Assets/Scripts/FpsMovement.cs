@@ -1,10 +1,4 @@
-﻿/*
- * written by Joseph Hocking 2017
- * released under MIT license
- * text of license https://opensource.org/licenses/MIT
- */
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,7 +11,7 @@ public class FpsMovement : MonoBehaviour
 
     static public float speed = 6.0f;
     static public float gravity = -9.8f;
-   // public float jumpSpeed = 8.0F;
+    // public float jumpSpeed = 8.0F;
 
     private Vector3 moveDirection = Vector3.zero;
 
@@ -34,16 +28,16 @@ public class FpsMovement : MonoBehaviour
     void Start()
     {
         charController = GetComponent<CharacterController>();
-        
+
     }
 
     void Update()
     {
         MoveCharacter();
         RotateCharacter();
-        RotateCamera();     
+        RotateCamera();
 
-       
+
     }
 
     private void MoveCharacter()
@@ -61,18 +55,64 @@ public class FpsMovement : MonoBehaviour
         charController.Move(movement);
     }
 
+
+
+
     private void RotateCharacter()
     {
-        transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityHor, 0);
+        switch (Menu.flagM)
+        {
+            case 1:
+                transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityHor, 0);
+                break;
+            case 0:
+                break;
+        }
+        //if (GenerationObjects.flagM == 0)
+        //{
+        //}
+        //if (GenerationObjects.flagM == 1)
+        //{
+        //    transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityHor, 0);
+        //    GenerationObjects.flagM = 0;
+        //}
     }
 
     private void RotateCamera()
     {
-        rotationVert -= Input.GetAxis("Mouse Y") * sensitivityVert;
-        rotationVert = Mathf.Clamp(rotationVert, minimumVert, maximumVert);
+        switch(Menu.flagM)
+        {
+            case 1:
+                rotationVert -= Input.GetAxis("Mouse Y") * sensitivityVert;
+                rotationVert = Mathf.Clamp(rotationVert, minimumVert, maximumVert);
 
-        headCam.transform.localEulerAngles = new Vector3(
-            rotationVert, headCam.transform.localEulerAngles.y, 0
-        );
+                headCam.transform.localEulerAngles = new Vector3(
+                    rotationVert, headCam.transform.localEulerAngles.y, 0
+                );                
+                break;
+
+            case 0:
+                break;
+        }
+
+        //if (GenerationObjects.flagM == 0)
+        //{
+           
+        //}
+        //if (GenerationObjects.flagM == 1)
+        //{
+        //    rotationVert -= Input.GetAxis("Mouse Y") * sensitivityVert;
+        //    rotationVert = Mathf.Clamp(rotationVert, minimumVert, maximumVert);
+
+        //    headCam.transform.localEulerAngles = new Vector3(
+        //        rotationVert, headCam.transform.localEulerAngles.y, 0
+        //    );
+
+        //    GenerationObjects.flagM = 0;
+
+        //}
     }
 }
+
+    
+
