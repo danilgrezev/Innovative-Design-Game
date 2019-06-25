@@ -62,8 +62,7 @@ public class Menu : MonoBehaviour {
     {
         Application.Quit();   
     }
-<<<<<<< GenerationDG
-=======
+
    
     // Update is called once per frame
     void Update()
@@ -160,5 +159,5 @@ public class Menu : MonoBehaviour {
     {
         SceneManager.LoadScene(0);
     }
->>>>>>> local
+
 }
