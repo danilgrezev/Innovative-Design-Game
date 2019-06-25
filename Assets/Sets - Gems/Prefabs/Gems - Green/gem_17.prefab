@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf54a09ab920238438fed3d99b805e59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hiy: {fileID: 1490031495178708}
   Attack: 0
   AddHealth: 0
   AddBron: 20

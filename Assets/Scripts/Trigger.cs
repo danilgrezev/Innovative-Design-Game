@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Trigger : MonoBehaviour
 {
-   
+    public GameObject hiy;
     public int Attack;
     public int AddHealth;
     public int AddBron;
@@ -29,6 +29,7 @@ public class Trigger : MonoBehaviour
             col.GetComponent<Windows>().hp -= Attack;
             col.GetComponent<Windows>().hp += AddHealth;
             col.GetComponent<Windows>().arm += AddBron;
+            Destroy(this.hiy);
         }
     }
 }
