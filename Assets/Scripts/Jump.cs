@@ -9,7 +9,6 @@ public class Jump : MonoBehaviour
     public float gravity = FpsMovement.gravity;
     private Vector3 moveDirection = Vector3.zero;
 
-
     void Update()
     {
         CharacterController controller = GetComponent<CharacterController>();
