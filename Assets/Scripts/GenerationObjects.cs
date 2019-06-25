@@ -6,15 +6,26 @@ using UnityEngine.SceneManagement;
 
 public class GenerationObjects : MonoBehaviour
 {
+    bool isLocked;
+
     public GameObject Player;
     public GameObject theEnemy;
     public GameObject theEnemy1;
     public GameObject theEnemy2;
     public GameObject theEnemy3;
 
+    public GameObject diedScreen;
+    public GameObject miniMenuPanel;   
+
     public int maxHp;
     public int hp;
-    public Slider slider;
+    public Slider sliderHp;
+
+    public int maxArm;
+    public int arm;
+    public Slider sliderArm;
+
+    int start = 0;
 
     public int xPos;
     public int zPos;
@@ -22,10 +33,28 @@ public class GenerationObjects : MonoBehaviour
     // Start is called before the first frame updates
     void Start()
     {
-        maxHp = 100;
-        hp = maxHp;
+        
+            maxArm = 100;
+            arm = maxArm;
+
+            maxHp = 100;
+            hp = maxHp;
+
+            SetCursorLock(true);
+
+            start++;
+              
+
         StartCoroutine(EnemyDrop());
     }
+
+    public void SetCursorLock(bool isLocked)
+    {
+        
+       
+        Cursor.lockState = isLocked ? CursorLockMode.Locked : CursorLockMode.None;
+    }
+
     IEnumerator EnemyDrop()
     {
         while (enemyCount < 2)
@@ -84,8 +113,9 @@ public class GenerationObjects : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        slider.value = hp;
+    {        
+        sliderHp.value = hp;
+
         if (theEnemy.tag == "Health" && Player.transform.position == theEnemy.transform.position)
         {
             hp += 15;
@@ -99,15 +129,57 @@ public class GenerationObjects : MonoBehaviour
         {
             hp = maxHp;
         }
-        if (transform.position.y < 0)
+        if (Player.transform.position.y < -3)
         {
-            hp = 0;
-        }
-        if (hp <= 0)
-        {
-            hp = 0;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
         }
+        if (hp <= 0)
+        {
+            hp = 0;      
+            SetCursorLock(isLocked);
+            diedScreen.SetActive(true);
+                         
+        }
+
+
+        sliderArm.value = arm;
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            arm -= 30;
+        }
+        if (arm > maxArm)
+        {
+            arm = maxArm;
+        }
+        if (arm < 0)
+        {
+            arm = 0;
+        }
+        int esc = 0;
+        if (Input.GetKeyDown(KeyCode.Escape) && esc == 0)
+        {
+            esc++;
+            SetCursorLock(isLocked);
+            miniMenuPanel.SetActive(!miniMenuPanel.activeSelf);
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && esc > 0)
+        {
+            esc=0;
+            SetCursorLock(!isLocked);
+            miniMenuPanel.SetActive(miniMenuPanel.activeSelf);
+        }
+
+
+
+    }
+
+    public void restartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public void goToMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }

@@ -21,4 +21,13 @@ public class Menu : MonoBehaviour {
     {
         Application.Quit();   
     }
+    void Update()
+    {
+        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            settings.SetActive(false);
+        }
+
+    }
 }
