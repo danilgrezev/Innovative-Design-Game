@@ -1,10 +1,4 @@
-﻿/*
- * written by Joseph Hocking 2017
- * released under MIT license
- * text of license https://opensource.org/licenses/MIT
- */
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -63,16 +57,31 @@ public class FpsMovement : MonoBehaviour
 
     private void RotateCharacter()
     {
-        transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityHor, 0);
+        switch (Windows.flagM)
+        {
+            case 1:
+                transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityHor, 0);
+                break;
+            case 0:
+                break;
+        }
     }
 
     private void RotateCamera()
     {
-        rotationVert -= Input.GetAxis("Mouse Y") * sensitivityVert;
-        rotationVert = Mathf.Clamp(rotationVert, minimumVert, maximumVert);
+        switch (Windows.flagM)
+        {
+            case 1:
+                rotationVert -= Input.GetAxis("Mouse Y") * sensitivityVert;
+                rotationVert = Mathf.Clamp(rotationVert, minimumVert, maximumVert);
 
-        headCam.transform.localEulerAngles = new Vector3(
-            rotationVert, headCam.transform.localEulerAngles.y, 0
-        );
+                headCam.transform.localEulerAngles = new Vector3(
+                    rotationVert, headCam.transform.localEulerAngles.y, 0
+                );
+                break;
+            case 0:
+                break;
+
+        }
     }
 }

@@ -7,57 +7,50 @@ using UnityEngine.SceneManagement;
 public class Windows : MonoBehaviour
 {
     bool isLocked;
+    bool flaff = false;
+
     public GameObject Player;
     public GameObject diedScreen;
     public GameObject miniMenuPanel;
 
-   // public int maxHp;
-    public int hp;
-    
+    public static int flagM = 1;
+    int flag = 0;
+    int flagStop = 1;
 
-   // public int maxArm;
+    public int hp;
     public int arm;
+
     public Slider sliderArm;
     public Slider sliderHp;
-
-    int start = 0;
     // Start is called before the first frame update
     void Start()
     {
+        flagM = 1;
 
-        //maxArm = 100;
         arm = 100;
-
-        //maxHp = 100;
         hp = 100;
 
         SetCursorLock(true);
-
-        start++;
-
+        Time.timeScale = 1;
     }
     public void SetCursorLock(bool isLocked)
     {
+        this.isLocked = isLocked;
         Cursor.lockState = isLocked ? CursorLockMode.Locked : CursorLockMode.None;
     }
     // Update is called once per frame
     void Update()
     {
         sliderHp.value = hp;
-
-        //if (theEnemy.tag == "Health" && Player.transform.position == theEnemy.transform.position)
-        //{
-        //    hp += 15;
-        //    Debug.Log(hp);
-        //}
+               
         if (Input.GetKeyDown(KeyCode.H))
         {
             hp -= 20;
         }
-        //if (hp > maxHp)
-        //{
-        //    hp = maxHp;
-        //}
+        if (hp > 100)
+        {
+            hp = 100;
+        }
         if (Player.transform.position.y < -3)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -66,9 +59,14 @@ public class Windows : MonoBehaviour
         if (hp <= 0)
         {
             hp = 0;
-            SetCursorLock(isLocked);
+            flag = 1;
+        }
+        if (flag == 1)
+        {
+            flagM = 0;
+            SetCursorLock(false);
             diedScreen.SetActive(true);
-
+            Time.timeScale = 0;
         }
 
 
@@ -77,26 +75,28 @@ public class Windows : MonoBehaviour
         {
             arm -= 30;
         }
-        //if (arm > maxArm)
-        //{
-        //    arm = maxArm;
-        //}
+        if (arm > 100)
+        {
+            arm = 100;
+        }
         if (arm < 0)
         {
             arm = 0;
         }
-        int esc = 0;
-        if (Input.GetKeyDown(KeyCode.Escape) && esc == 0)
+
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            esc++;
-            SetCursorLock(isLocked);
-            miniMenuPanel.SetActive(!miniMenuPanel.activeSelf);
+            SetCursorLock(false);
+            flaff = !flaff;
+            miniMenuPanel.SetActive(flaff);
+            flagM = 0;
+            Time.timeScale = 0;
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && esc > 0)
+
+        if (!miniMenuPanel.activeSelf && !diedScreen.activeSelf)
         {
-            esc = 0;
-            SetCursorLock(!isLocked);
-            miniMenuPanel.SetActive(miniMenuPanel.activeSelf);
+            flagM = 1;
+            Time.timeScale = 1;
         }
 
 

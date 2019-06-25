@@ -21,7 +21,7 @@ public class GenerationObjects : MonoBehaviour
 
     IEnumerator EnemyDrop()
     {
-        while (enemyCount < 2)
+        while (enemyCount < 4)
         {
             //float wallo = wall[0].transform.position;
             var maxx = GameController.hei;
@@ -34,7 +34,7 @@ public class GenerationObjects : MonoBehaviour
             enemyCount += 1;
         }
         enemyCount = 0;
-        while (enemyCount < 2)
+        while (enemyCount < 4)
         {
             //float wallo = wall[0].transform.position;
             var maxx = GameController.hei;
@@ -47,7 +47,7 @@ public class GenerationObjects : MonoBehaviour
             enemyCount += 1;
         }
         enemyCount = 0;
-        while (enemyCount < 2)
+        while (enemyCount < 4)
         {
             //float wallo = wall[0].transform.position;
             var maxx = GameController.hei;
@@ -60,7 +60,7 @@ public class GenerationObjects : MonoBehaviour
             enemyCount += 1;
         }
         enemyCount = 0;
-        while (enemyCount < 2)
+        while (enemyCount < 4)
         {
             //float wallo = wall[0].transform.position;
             var maxx = GameController.hei;
