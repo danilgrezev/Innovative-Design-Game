@@ -2,19 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GenerationObjects : MonoBehaviour
-{    
+{
+    public GameObject Player;
     public GameObject theEnemy;
     public GameObject theEnemy1;
     public GameObject theEnemy2;
     public GameObject theEnemy3;
+
+    public int maxHp;
+    public int hp;
+    public Slider slider;
+
     public int xPos;
     public int zPos;
     public int enemyCount;
     // Start is called before the first frame updates
     void Start()
     {
+        maxHp = 100;
+        hp = maxHp;
         StartCoroutine(EnemyDrop());
     }
     IEnumerator EnemyDrop()
@@ -27,7 +36,7 @@ public class GenerationObjects : MonoBehaviour
 
             xPos = Random.Range(5, maxz * 3);//чтобы **у
             zPos = Random.Range(5, maxx * 3);
-            Instantiate(theEnemy, new Vector3(xPos, 1, zPos), Quaternion.identity);
+            Instantiate(theEnemy, new Vector3(xPos, (float)1.08, zPos), Quaternion.identity);
             yield return new WaitForSeconds(0.1f);
             enemyCount += 1;
         }
@@ -40,7 +49,7 @@ public class GenerationObjects : MonoBehaviour
 
             xPos = Random.Range(5, maxz * 3);//чтобы **у
             zPos = Random.Range(5, maxx * 3);
-            Instantiate(theEnemy1, new Vector3(xPos, 1, zPos), Quaternion.identity);
+            Instantiate(theEnemy1, new Vector3(xPos, (float)1.08, zPos), Quaternion.identity);
             yield return new WaitForSeconds(0.1f);
             enemyCount += 1;
         }
@@ -53,7 +62,7 @@ public class GenerationObjects : MonoBehaviour
 
             xPos = Random.Range(5, maxz * 3);//чтобы **у
             zPos = Random.Range(5, maxx * 3);
-            Instantiate(theEnemy2, new Vector3(xPos, 1, zPos), Quaternion.identity);
+            Instantiate(theEnemy2, new Vector3(xPos, (float)1.08, zPos), Quaternion.identity);
             yield return new WaitForSeconds(0.1f);
             enemyCount += 1;
         }
@@ -66,7 +75,7 @@ public class GenerationObjects : MonoBehaviour
 
             xPos = Random.Range(5, maxz * 3);//чтобы **у
             zPos = Random.Range(5, maxx * 3);
-            Instantiate(theEnemy3, new Vector3(xPos, 1, zPos), Quaternion.identity);
+            Instantiate(theEnemy3, new Vector3(xPos, (float)1.08, zPos), Quaternion.identity);
             yield return new WaitForSeconds(0.1f);
             enemyCount += 1;
         }
@@ -76,6 +85,29 @@ public class GenerationObjects : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        slider.value = hp;
+        if (theEnemy.tag == "Health" && Player.transform.position == theEnemy.transform.position)
+        {
+            hp += 15;
+            Debug.Log(hp);
+        }
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            hp -= 20;
+        }
+        if (hp > maxHp)
+        {
+            hp = maxHp;
+        }
+        if (transform.position.y < 0)
+        {
+            hp = 0;
+        }
+        if (hp <= 0)
+        {
+            hp = 0;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        }
     }
 }
