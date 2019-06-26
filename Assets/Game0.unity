@@ -589,13 +589,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
+  PlayerCam: {fileID: 0}
   theEnemy: {fileID: 0}
   theEnemy1: {fileID: 0}
   theEnemy2: {fileID: 0}
   theEnemy3: {fileID: 0}
   diedScreen: {fileID: 0}
   miniMenuPanel: {fileID: 0}
+  maxHp: 0
+  hp: 0
   sliderHp: {fileID: 0}
+  maxArm: 0
+  arm: 0
   sliderArm: {fileID: 0}
   xPos: 0
   zPos: 0
@@ -931,13 +936,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
+  PlayerCam: {fileID: 0}
   theEnemy: {fileID: 0}
   theEnemy1: {fileID: 0}
   theEnemy2: {fileID: 0}
   theEnemy3: {fileID: 0}
   diedScreen: {fileID: 0}
   miniMenuPanel: {fileID: 0}
+  maxHp: 0
+  hp: 0
   sliderHp: {fileID: 0}
+  maxArm: 0
+  arm: 0
   sliderArm: {fileID: 0}
   xPos: 0
   zPos: 0
@@ -1482,13 +1492,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1773131082}
+  PlayerCam: {fileID: 1623668464}
   theEnemy: {fileID: 1000597641180636, guid: a1aff0929c3644e8f8cbc6dd0d222517, type: 3}
   theEnemy1: {fileID: 1653877401142270, guid: d31e493ab3a644b2aa04c555917e3dad, type: 3}
   theEnemy2: {fileID: 1496786617372960, guid: c7698cfd4f3fc43f692e93917e2979e8, type: 3}
   theEnemy3: {fileID: 1206597442977834, guid: c15d0c985b7ed4c8498e9afa2cc2b735, type: 3}
   diedScreen: {fileID: 2087451643}
   miniMenuPanel: {fileID: 232686545}
+  maxHp: 0
+  hp: 0
   sliderHp: {fileID: 1241862554}
+  maxArm: 0
+  arm: 0
   sliderArm: {fileID: 1884485513}
   xPos: 0
   zPos: 0
@@ -2927,13 +2942,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
+  PlayerCam: {fileID: 0}
   theEnemy: {fileID: 0}
   theEnemy1: {fileID: 0}
   theEnemy2: {fileID: 0}
   theEnemy3: {fileID: 0}
   diedScreen: {fileID: 0}
   miniMenuPanel: {fileID: 0}
+  maxHp: 0
+  hp: 0
   sliderHp: {fileID: 0}
+  maxArm: 0
+  arm: 0
   sliderArm: {fileID: 0}
   xPos: 0
   zPos: 0
@@ -4619,9 +4639,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73af610e5e522df4a8a4d662823cda1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diedScreen: {fileID: 2087451643}
-  diedCamera: {fileID: 1459708485}
-  Parent: {fileID: 424680902}
 --- !u!114 &1773131088
 MonoBehaviour:
   m_ObjectHideFlags: 0

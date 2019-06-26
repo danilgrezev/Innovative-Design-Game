@@ -9,6 +9,7 @@ public class GenerationObjects : MonoBehaviour
     bool isLocked;
 
     public GameObject Player;
+    public GameObject PlayerCam;
     public GameObject theEnemy;
     public GameObject theEnemy1;
     public GameObject theEnemy2;
@@ -30,10 +31,14 @@ public class GenerationObjects : MonoBehaviour
     public int xPos;
     public int zPos;
     public int enemyCount;
+
+    private float height1 = 1.08f;
+    private float height2 = 4.58f;
+
     // Start is called before the first frame updates
     void Start()
     {
-        
+
             maxArm = 100;
             arm = maxArm;
 
@@ -42,9 +47,17 @@ public class GenerationObjects : MonoBehaviour
 
             SetCursorLock(true);
 
-            start++;
-              
+            theEnemy.GetComponent<RealEnemy>().player = PlayerCam.transform;
+            theEnemy.GetComponent<RealEnemy>().height = height1;
+            theEnemy1.GetComponent<RealEnemy>().player = PlayerCam.transform;
+            theEnemy1.GetComponent<RealEnemy>().height = height1;
+            theEnemy2.GetComponent<RealEnemy>().player = PlayerCam.transform;
+            theEnemy2.GetComponent<RealEnemy>().height = height2;
+            theEnemy3.GetComponent<RealEnemy>().player = PlayerCam.transform;
+            theEnemy3.GetComponent<RealEnemy>().height = height1;
 
+            start++;
+        
         StartCoroutine(EnemyDrop());
     }
 
@@ -65,7 +78,7 @@ public class GenerationObjects : MonoBehaviour
 
             xPos = Random.Range(5, maxz * 3);//чтобы **у
             zPos = Random.Range(5, maxx * 3);
-            Instantiate(theEnemy, new Vector3(xPos, (float)1.08, zPos), Quaternion.identity);
+            Instantiate(theEnemy, new Vector3(xPos, height1, zPos), Quaternion.identity);
             yield return new WaitForSeconds(0.1f);
             enemyCount += 1;
         }
@@ -78,7 +91,7 @@ public class GenerationObjects : MonoBehaviour
 
             xPos = Random.Range(5, maxz * 3);//чтобы **у
             zPos = Random.Range(5, maxx * 3);
-            Instantiate(theEnemy1, new Vector3(xPos, (float)1.08, zPos), Quaternion.identity);
+            Instantiate(theEnemy1, new Vector3(xPos, height1, zPos), Quaternion.identity);
             yield return new WaitForSeconds(0.1f);
             enemyCount += 1;
         }
@@ -91,7 +104,7 @@ public class GenerationObjects : MonoBehaviour
 
             xPos = Random.Range(5, maxz * 3);//чтобы **у
             zPos = Random.Range(5, maxx * 3);
-            Instantiate(theEnemy2, new Vector3(xPos, (float)1.08, zPos), Quaternion.identity);
+            Instantiate(theEnemy2, new Vector3(xPos, height2, zPos), Quaternion.identity);
             yield return new WaitForSeconds(0.1f);
             enemyCount += 1;
         }
@@ -104,7 +117,7 @@ public class GenerationObjects : MonoBehaviour
 
             xPos = Random.Range(5, maxz * 3);//чтобы **у
             zPos = Random.Range(5, maxx * 3);
-            Instantiate(theEnemy3, new Vector3(xPos, (float)1.08, zPos), Quaternion.identity);
+            Instantiate(theEnemy3, new Vector3(xPos, height1, zPos), Quaternion.identity);
             yield return new WaitForSeconds(0.1f);
             enemyCount += 1;
         }
@@ -113,7 +126,9 @@ public class GenerationObjects : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {        
+    {
+        Debug.Log(sliderHp.value);
+        Debug.Log(hp);
         sliderHp.value = hp;
 
         if (theEnemy.tag == "Health" && Player.transform.position == theEnemy.transform.position)
